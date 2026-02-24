@@ -1,10 +1,202 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>DevOps Project</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HotKicks | Elite Footwear</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4757;
+            --dark: #2f3542;
+            --light: #f1f2f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Navbar */
+        nav {
+            background: var(--dark);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        nav h1 { color: var(--primary); }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h2 { font-size: 3rem; animation: fadeInUp 1s ease-out; }
+
+        /* Products Section */
+        .section-title { text-align: center; margin: 3rem 0; font-size: 2rem; }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 0 5%;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 5%;
+            margin-top: 4rem;
+        }
+
+        .review-card {
+            font-style: italic;
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #eee;
+        }
+    </style>
 </head>
 <body>
-    <h1>Deployed via CircleCI 🚀</h1>
-    <p>Basic CI/CD Pipeline Working</p>
+
+    <nav>
+        <h1>HOTKICKS</h1>
+        <div>
+            <a href="#products" style="color:white; margin-right:20px; text-decoration:none;">Shop</a>
+            <a href="#projects" style="color:white; text-decoration:none;">Projects</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h2>STEP INTO THE FUTURE</h2>
+        <p>Premium Footwear for the Modern Athlete</p>
+        <button class="btn">View Collection</button>
+    </header>
+
+    <h2 class="section-title" id="products">New Arrivals</h2>
+    <div class="container">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80" alt="Shoe 1">
+            <h3>Air Max Blaze</h3>
+            <p>$120.00</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=500&q=80" alt="Shoe 2">
+            <h3>Urban Street</h3>
+            <p>$95.00</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=500&q=80" alt="Shoe 3">
+            <h3>Neon Runner</h3>
+            <p>$110.00</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+    </div>
+
+    <h2 class="section-title" id="projects">Our Projects</h2>
+    <div class="container">
+        <div class="card">
+            <h3>Marathon 2024</h3>
+            <p>Official footwear partner for the National City Marathon.</p>
+        </div>
+        <div class="card">
+            <h3>Eco-Sole Initiative</h3>
+            <p>Creating 100% biodegradable soles by 2026.</p>
+        </div>
+    </div>
+
+    <section class="reviews">
+        <h2 style="margin-bottom: 2rem;">What our Kickerz say</h2>
+        <div class="review-card">
+            "The most comfortable shoes I've ever owned. The delivery was lightning fast!" - <strong>Alex J.</strong>
+        </div>
+        <div class="review-card">
+            "HotKicks is the only brand I trust for my morning runs." - <strong>Sarah M.</strong>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 HotKicks Footwear. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
