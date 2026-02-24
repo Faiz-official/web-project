@@ -15,13 +15,13 @@ jobs:
           name: Deploy Website to EC2
           command: |
             scp -o StrictHostKeyChecking=no index.html ec2-user@3.108.217.27:/home/ec2-user/
-            ssh -o StrictHostKeyChecking=no ec2-user@3.108.217.27 << EOF
-              sudo mv /home/ec2-user/index.html /usr/share/nginx/html/index.html
-              sudo systemctl restart nginx
-            EOF
+            ssh -o StrictHostKeyChecking=no ec2-user@3.108.217.27 "sudo mv /home/ec2-user/index.html /usr/share/nginx/html/index.html && sudo systemctl restart nginx"
 
 workflows:
   version: 2
   deploy_pipeline:
     jobs:
-      - deploy
+      - deploy:
+          filters:
+            branches:
+              only: main
