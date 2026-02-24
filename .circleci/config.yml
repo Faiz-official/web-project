@@ -9,7 +9,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "SHA256:J6o80FFKCjBUKuuDMKSEto0Q7DnA2DVmolHxuC1E1ks"
+            - "SHA256:H7mmE5tvLp2fQmOxBiLaIITK812tS+eCNxZJQiYrrBY"
 
       - run:
           name: Deploy Website to EC2
