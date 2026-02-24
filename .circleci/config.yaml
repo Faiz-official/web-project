@@ -1,0 +1,27 @@
+version: 2.1
+
+jobs:
+  deploy:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:J6o80FFKCjBUKuuDMKSEto0Q7DnA2DVmolHxuC1E1ks"
+
+      - run:
+          name: Deploy Website to EC2
+          command: |
+            scp -o StrictHostKeyChecking=no index.html ec2-user@3.108.217.27:/home/ec2-user/
+            ssh -o StrictHostKeyChecking=no ec2-user@YOUR_PUBLIC_IP << EOF
+              sudo mv /home/ec2-user/index.html /usr/share/nginx/html/index.html
+              sudo systemctl restart nginx
+            EOF
+
+workflows:
+  version: 2
+  deploy_pipeline:
+    jobs:
+      - deploy
